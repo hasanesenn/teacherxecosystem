@@ -4,12 +4,13 @@ import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  // Turkish characters live in the extended latin subset.
+  subsets: ["latin-ext"],
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  subsets: ["latin"],
+  subsets: ["latin-ext"],
 });
 
 export const metadata: Metadata = {
@@ -24,10 +25,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="tr"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>{children}</body>
     </html>
   );
 }
